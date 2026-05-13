@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBuild India - Green Building Consultant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d8659;
+            --secondary-color: #1f5a3f;
+            --accent-color: #52b788;
+            --light-bg: #f0f8f5;
+            --dark-text: #1b1b1b;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🌱";
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .lang-switch {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(45, 134, 89, 0.8) 0%, rgba(31, 90, 63, 0.8) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80') center/cover;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-child(even) {
+            background: var(--light-bg);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .certification {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Benefits Grid */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Materials Section */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .material-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .material-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .material-content {
+            padding: 1.5rem;
+        }
+
+        .material-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .material-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-section {
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 1.5rem 0;
+        }
+
+        /* Responsive */
+        /* Auth Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+            text-align: left;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            opacity: 0.8;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(45, 134, 89, 0.2);
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .form-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .form-toggle {
+            display: none;
+        }
+
+        .form-toggle.active {
+            display: block;
+        }
+
+        /* Image Box */
+        .image-box {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid,
+            .benefits,
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+            }
+
+            .chatbox-window {
+                width: 280px;
+                height: 400px;
+            }
+        }
+
+        /* Chatbox Styles */
+        .chatbox-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .chatbox-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbox-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .chatbox-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 40px rgba(0,0,0,0.2);
+            flex-direction: column;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chatbox-window.active {
+            display: flex;
+        }
+
+        .chatbox-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbox-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chatbox-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .chatbox-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #f9f9f9;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message-bot {
+            justify-content: flex-start;
+        }
+
+        .message-user {
+            justify-content: flex-end;
+        }
+
+        .message-text {
+            max-width: 70%;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .message-bot .message-text {
+            background: white;
+            border: 1px solid var(--border-color);
+            color: var(--dark-text);
+        }
+
+        .message-user .message-text {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .chatbox-footer {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbox-input {
+            flex: 1;
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 0.9rem;
+            resize: none;
+        }
+
+        .chatbox-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(45, 134, 89, 0.2);
+        }
+
+        .chatbox-send {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .chatbox-send:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">EcoBuild India</div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#materials">Materials</a>
+                <div class="lang-switch">English</div>
+                <button class="btn" onclick="openAuthModal('login')" style="background: white; color: var(--primary-color); padding: 0.5rem 1rem; font-size: 0.9rem;">Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Building a Sustainable Future in India</h1>
+            <p>Expert consultancy for eco-friendly, cost-effective, and energy-efficient construction. Reduce your carbon footprint today.</p>
+            <button class="btn">Explore Services</button>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>🏢 Inspiring Green Architecture</h2>
+            <p class="section-subtitle">Showcase of LEED certified green buildings across India</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1596423735880-5c6fa9fb59da?auto=format&fit=crop&w=800&q=80" alt="Suzlon One Earth" class="project-image">
+                    <div class="project-content">
+                        <h3>Suzlon One Earth</h3>
+                        <p class="project-location">📍 Pune, Maharashtra</p>
+                        <span class="certification">LEED Platinum</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=800&q=80" alt="CII-Godrej Green Business Centre" class="project-image">
+                    <div class="project-content">
+                        <h3>CII-Godrej Green Business Centre</h3>
+                        <p class="project-location">📍 Hyderabad, Telangana</p>
+                        <span class="certification">LEED Platinum</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=800&q=80" alt="ITC Green Centre" class="project-image">
+                    <div class="project-content">
+                        <h3>ITC Green Centre</h3>
+                        <p class="project-location">📍 Gurgaon, Haryana</p>
+                        <span class="certification">LEED Platinum</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Infosys SDB-11" class="project-image">
+                    <div class="project-content">
+                        <h3>Infosys SDB-11</h3>
+                        <p class="project-location">📍 Pune, Maharashtra</p>
+                        <span class="certification">LEED Platinum</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Olympia Tech Park" class="project-image">
+                    <div class="project-content">
+                        <h3>Olympia Tech Park</h3>
+                        <p class="project-location">📍 Chennai, Tamil Nadu</p>
+                        <span class="certification">LEED Gold</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80" alt="Patni Knowledge Center" class="project-image">
+                    <div class="project-content">
+                        <h3>Patni Knowledge Center</h3>
+                        <p class="project-location">📍 Noida, UP</p>
+                        <span class="certification">LEED Platinum</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <h2>🌿 Why Choose Green Buildings?</h2>
+            <p class="section-subtitle">Conventional buildings are a major contributor to global warming. By shifting to sustainable practices, we reduce embodied energy, lower life cycle costs, and create healthier living environments.</p>
+            <div class="benefits">
+                <div class="benefit-card">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80" alt="Environmental Benefits" class="benefit-image">
+                    <div class="benefit-icon">♻️</div>
+                    <h3>Environmental Benefits</h3>
+                    <p>Reduce carbon emissions and minimize environmental impact through sustainable construction practices.</p>
+                </div>
+                <div class="benefit-card">
+                    <img src="https://images.unsplash.com/photo-1518609267591-e6eef06d8fbf?auto=format&fit=crop&w=400&q=80" alt="Economical Benefits" class="benefit-image">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Economical Benefits</h3>
+                    <p>Lower operational costs, reduced energy bills, and long-term financial savings through efficiency.</p>
+                </div>
+                <div class="benefit-card">
+                    <img src="https://images.unsplash.com/photo-1584622281867-8d4c74c3f4e7?auto=format&fit=crop&w=400&q=80" alt="Health Benefits" class="benefit-image">
+                    <div class="benefit-icon">❤️</div>
+                    <h3>Health & Social Benefits</h3>
+                    <p>Improved indoor air quality, natural lighting, and healthier workspaces for occupants.</p>
+                </div>
+                <div class="benefit-card">
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f8d3cc96?auto=format&fit=crop&w=400&q=80" alt="Carbon Emissions" class="benefit-image">
+                    <div class="benefit-icon">☘️</div>
+                    <h3>Reduced Carbon Emissions</h3>
+                    <p>Significantly lower carbon footprint throughout the building's entire lifecycle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials">
+        <div class="container">
+            <h2>🔨 Innovating with Eco-Materials</h2>
+            <p class="section-subtitle">Advanced sustainable materials for modern green construction</p>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=600&q=80" alt="AAC Blocks" class="material-image">
+                    <div class="material-content">
+                        <h3>AAC Blocks & Light Weight Beams</h3>
+                        <p>Autoclaved Aerated Concrete blocks are lightweight, precast, foam concrete building materials that reduce overall structural load.</p>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Solar PV Panels" class="material-image">
+                    <div class="material-content">
+                        <h3>Solar PV Panels</h3>
+                        <p>Highly affordable renewable energy source. Integral part of utility of solar energy in buildings for sustainable power generation.</p>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <img src="https://images.unsplash.com/photo-1596262174292-db9b0be9d4d4?auto=format&fit=crop&w=600&q=80" alt="Sustainable Timber" class="material-image">
+                    <div class="material-content">
+                        <h3>Sustainable Timber & Wood</h3>
+                        <p>Certified sustainable wood sourced from responsibly managed forests. Provides excellent structural properties with minimal environmental impact.</p>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <img src="https://images.unsplash.com/photo-1580211797285-3bcbd69165b4?auto=format&fit=crop&w=600&q=80" alt="Fly Ash Blocks" class="material-image">
+                    <div class="material-content">
+                        <h3>Fly Ash & Stabilized Mud Blocks</h3>
+                        <p>Eco-friendly alternative utilizing industrial waste and local soil, with near-zero premium over red brick.</p>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <img src="https://images.unsplash.com/photo-1518330743973-5e5b87e3adc7?auto=format&fit=crop&w=600&q=80" alt="Bamboo Composites" class="material-image">
+                    <div class="material-content">
+                        <h3>Bamboo & Fiber Composites</h3>
+                        <p>Highly renewable, high tensile strength substitute for steel and wood in structural elements.</p>
+                    </div>
+                </div>
+
+                <div class="material-card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Green Concrete" class="material-image">
+                    <div class="material-content">
+                        <h3>Lime Pozzolana & Green Concrete</h3>
+                        <p>Substitutes standard cement to reduce carbon footprint. Great for filler slabs and foundation work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About/Concept Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2>🌍 EcoBuild Concept</h2>
+            <p class="section-subtitle">SUSTAINABLE FUTURE</p>
+            <p>At EcoBuild India, we are committed to transforming the construction industry by promoting sustainable building practices. Our team of expert consultants works with architects, builders, and property developers to create buildings that are not only environmentally responsible but also economically viable and socially beneficial.</p>
+            
+            <!-- Image Box -->
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Green Building Concept">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>🔧 Our Services</h2>
+            <p class="section-subtitle">Comprehensive green building consulting solutions</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=400&q=80" alt="Design Consultation" class="service-image">
+                    <div class="service-content">
+                        <h3>Design Consultation</h3>
+                        <p>Expert guidance on sustainable building design and planning from conception to execution.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="Project Management" class="service-image">
+                    <div class="service-content">
+                        <h3>Project Management</h3>
+                        <p>Professional project management ensuring quality, timeline, and sustainability goals are met.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1454625283946-c6f9e9ed90cb?auto=format&fit=crop&w=400&q=80" alt="LEED Certification" class="service-image">
+                    <div class="service-content">
+                        <h3>LEED Certification</h3>
+                        <p>Complete assistance in achieving LEED certification for your green building projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 EcoBuild India - Green Building Consultants. All rights reserved.</p>
+            <div class="footer-divider"></div>
+            <p>Created by: <strong>Your Company Name</strong></p>
+            <p>Email: <a href="mailto:mythilim936@gmail.com">mythilim936@gmail.com</a></p>
+            <p>Location: India</p>
+        </div>
+    </footer>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="auth-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="authTitle">Login</h2>
+                <button class="close-btn" onclick="closeAuthModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Login Form -->
+                <div id="loginForm" class="form-toggle active">
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" required placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="form-btn">Login</button>
+                        <div class="form-footer">
+                            Don't have an account? <a onclick="toggleAuthForm('signup')">Sign Up</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signupForm" class="form-toggle">
+                    <form onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label for="signupName">Full Name</label>
+                            <input type="text" id="signupName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email Address</label>
+                            <input type="email" id="signupEmail" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signupPassword">Password</label>
+                            <input type="password" id="signupPassword" required placeholder="Create a password">
+                        </div>
+                        <div class="form-group">
+                            <label for="signupConfirm">Confirm Password</label>
+                            <input type="password" id="signupConfirm" required placeholder="Confirm your password">
+                        </div>
+                        <button type="submit" class="form-btn">Sign Up</button>
+                        <div class="form-footer">
+                            Already have an account? <a onclick="toggleAuthForm('login')">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbox -->
+    <div class="chatbox-container">
+        <button class="chatbox-btn" onclick="toggleChatbox()" title="Chat with us">💬</button>
+        <div class="chatbox-window" id="chatboxWindow">
+            <div class="chatbox-header">
+                <h3>EcoBuild Chat</h3>
+                <button class="chatbox-close" onclick="closeChatbox()">&times;</button>
+            </div>
+            <div class="chatbox-body" id="chatboxBody">
+                <div class="chat-message message-bot">
+                    <div class="message-text">Hi! 👋 Welcome to EcoBuild India. How can we help you today?</div>
+                </div>
+            </div>
+            <div class="chatbox-footer">
+                <input type="text" class="chatbox-input" id="chatboxInput" placeholder="Type your message...">
+                <button class="chatbox-send" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function openAuthModal(type) {
+            const modal = document.getElementById('authModal');
+            modal.style.display = 'block';
+            toggleAuthForm(type);
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            modal.style.display = 'none';
+        }
+
+        function toggleAuthForm(type) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const authTitle = document.getElementById('authTitle');
+
+            if (type === 'login') {
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+                authTitle.textContent = 'Login';
+            } else {
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+                authTitle.textContent = 'Sign Up';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            alert(`Login successful!\nEmail: ${email}`);
+            closeAuthModal();
+            // Reset form
+            event.target.reset();
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirm = document.getElementById('signupConfirm').value;
+
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            alert(`Sign up successful!\nName: ${name}\nEmail: ${email}`);
+            closeAuthModal();
+            // Reset form
+            event.target.reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('authModal');
+            if (event.target === modal) {
+                closeAuthModal();
+            }
+        }
+
+        // Chatbox functionality
+        function toggleChatbox() {
+            const chatbox = document.getElementById('chatboxWindow');
+            chatbox.classList.toggle('active');
+        }
+
+        function closeChatbox() {
+            const chatbox = document.getElementById('chatboxWindow');
+            chatbox.classList.remove('active');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatboxInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            input.focus();
+
+            // Simulate bot response
+            setTimeout(() => {
+                const responses = [
+                    'Thanks for your message! How can we help you with green building solutions?',
+                    'Great question! Feel free to ask about our services, projects, or eco-materials.',
+                    'We\'re here to assist you with sustainable building consultancy. What would you like to know?',
+                    'Thank you for reaching out! Our team will get back to you shortly.',
+                    'Interested in green building? Let us know how we can help!'
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(randomResponse, 'bot');
+            }, 500);
+        }
+
+        function addMessage(text, sender) {
+            const chatBody = document.getElementById('chatboxBody');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message message-${sender}`;
+            messageDiv.innerHTML = `<div class="message-text">${text}</div>`;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Allow Enter key to send message
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('chatboxInput');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
